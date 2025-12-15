@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planner Foco TDAH</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body id="app-body" class="focus-mode">
+    <div class="container">
+        
+        <header class="header">
+            <h1 id="status-text">PRONTO PARA FOCO</h1>
+            <div id="timer-display" class="timer">25:00</div>
+            <div id="progress-bar-container">
+                <div id="progress-bar"></div>
+            </div>
+        </header>
+
+        <section class="controls">
+            <button id="start-pause-btn" class="main-btn play">INICIAR FOCO</button>
+            <button id="reset-btn" class="secondary-btn">REINICIAR</button>
+        </section>
+
+        <section class="task-section">
+            <h2>TAREFAS DE HOJE</h2>
+            <div id="task-list">
+                </div>
+            <input type="text" id="new-task-input" placeholder="Nova tarefa (pressione Enter)">
+        </section>
+
+        <section class="notes-section">
+            <h2>BRAIN DUMP (Notas Rápidas)</h2>
+            <textarea id="brain-dump-area" placeholder="Anotações rápidas, ideias ou pensamentos para tirar da mente..."></textarea>
+        </section>
+        
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

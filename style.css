@@ -1,0 +1,156 @@
+/* RESET E CORES BASE - Modo Escuro Padrão */
+:root {
+    --bg-dark: #121212;
+    --text-light: #FFFFFF;
+    --color-focus: #4CAF50;    /* Verde Calmo */
+    --color-break: #2196F3;    /* Azul Claro Calmo */
+    --color-start: #FFC107;    /* Amarelo Quente */
+    --color-secondary: #444444; /* Cinza para elementos secundários */
+    --font-sans: 'Helvetica Neue', Arial, sans-serif;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Alinha no topo para melhor uso em telas pequenas */
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px; /* Limita a largura em telas grandes para manter o foco */
+}
+
+/* 1. MÓDULO TIME-BOXER */
+.header {
+    text-align: center;
+    padding: 20px 0;
+}
+
+#status-text {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    font-weight: 300;
+}
+
+.timer {
+    font-size: 6em; /* NÚMEROS GIGANTES! */
+    font-weight: 700;
+    letter-spacing: -3px;
+    margin-bottom: 20px;
+}
+
+/* Barra de Progresso Simples */
+#progress-bar-container {
+    height: 10px;
+    background-color: var(--color-secondary);
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+#progress-bar {
+    height: 100%;
+    width: 100%; /* Começa cheio */
+    background-color: var(--color-focus);
+    transition: width 1s linear, background-color 0.5s ease;
+}
+
+/* 2. MÓDULO DE CONTROLE */
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.main-btn, .secondary-btn {
+    padding: 15px 30px;
+    font-size: 1.2em;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    flex-grow: 1;
+    max-width: 200px;
+}
+
+.main-btn.play { background-color: var(--color-start); color: var(--bg-dark); }
+.main-btn.focus { background-color: var(--color-focus); color: var(--text-light); }
+.main-btn.break { background-color: var(--color-break); color: var(--text-light); }
+.secondary-btn { background-color: var(--color-secondary); color: var(--text-light); }
+
+/* 3. MÓDULO DE TAREFAS */
+.task-section h2, .notes-section h2 {
+    font-size: 1.2em;
+    border-bottom: 1px solid var(--color-secondary);
+    padding-bottom: 5px;
+    margin-top: 30px;
+}
+
+#new-task-input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #222222;
+    color: var(--text-light);
+    border: 1px solid var(--color-secondary);
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #282828;
+}
+
+.task-item:last-child {
+    border-bottom: none;
+}
+
+.task-text {
+    flex-grow: 1;
+    margin-left: 10px;
+    font-size: 1.1em;
+}
+
+.task-completed .task-text {
+    text-decoration: line-through;
+    color: #888888;
+}
+
+/* Checkbox simples e grande para fácil clique */
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+/* 4. MÓDULO BRAIN DUMP */
+#brain-dump-area {
+    width: 100%;
+    min-height: 100px;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #222222;
+    color: var(--text-light);
+    border: 1px solid var(--color-secondary);
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+/* Classes para transição de cores do corpo */
+.focus-mode { background-color: var(--bg-dark); }
+.break-mode { background-color: #1c1f21; } /* Ligeiramente diferente para indicar pausa */
