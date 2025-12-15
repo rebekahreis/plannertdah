@@ -2,10 +2,15 @@
 :root {
     --bg-dark: #121212;
     --text-light: #FFFFFF;
-    --color-focus: #4CAF50;    /* Verde Calmo */
+    --color-focus: #4CAF50;    /* Verde Calmo (Q2: Agendar - Foco) */
     --color-break: #2196F3;    /* Azul Claro Calmo */
-    --color-start: #FFC107;    /* Amarelo Quente */
+    --color-start: #FFC107;    /* Amarelo Quente (para botão iniciar) */
     --color-secondary: #444444; /* Cinza para elementos secundários */
+    --color-q1: #f44336; /* Vermelho - Urgente/Importante */
+    --color-q3: #FF9800; /* Laranja - Urgente/Não Importante */
+    --color-q4: #9E9E9E; /* Cinza Escuro - Eliminar */
+    --color-water: #00BCD4; /* Ciano para Água */
+    --color-gym: #9C27B0; /* Roxo para Academia */
     --font-sans: 'Helvetica Neue', Arial, sans-serif;
 }
 
@@ -17,140 +22,142 @@ body {
     padding: 20px;
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* Alinha no topo para melhor uso em telas pequenas */
+    align-items: flex-start;
     min-height: 100vh;
     box-sizing: border-box;
 }
 
 .container {
     width: 100%;
-    max-width: 600px; /* Limita a largura em telas grandes para manter o foco */
+    max-width: 600px;
 }
 
-/* 1. MÓDULO TIME-BOXER */
-.header {
-    text-align: center;
-    padding: 20px 0;
-}
-
-#status-text {
-    font-size: 1.2em;
-    margin-bottom: 10px;
-    font-weight: 300;
-}
-
-.timer {
-    font-size: 6em; /* NÚMEROS GIGANTES! */
-    font-weight: 700;
-    letter-spacing: -3px;
-    margin-bottom: 20px;
-}
-
-/* Barra de Progresso Simples */
-#progress-bar-container {
-    height: 10px;
-    background-color: var(--color-secondary);
+/* 1. MÓDULO TIME-BOXER & CONTROLES */
+.header { text-align: center; padding: 20px 0; }
+#status-text { font-size: 1.2em; margin-bottom: 10px; font-weight: 300; }
+#category-select {
+    background-color: #333;
+    color: var(--text-light);
+    border: 1px solid var(--color-secondary);
+    padding: 8px;
     border-radius: 5px;
-    overflow: hidden;
-    margin-bottom: 30px;
+    font-size: 1em;
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 250px;
+    text-align: center;
 }
-
-#progress-bar {
-    height: 100%;
-    width: 100%; /* Começa cheio */
-    background-color: var(--color-focus);
-    transition: width 1s linear, background-color 0.5s ease;
-}
-
-/* 2. MÓDULO DE CONTROLE */
-.controls {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 30px;
-}
-
-.main-btn, .secondary-btn {
-    padding: 15px 30px;
-    font-size: 1.2em;
-    font-weight: bold;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.2s;
-    flex-grow: 1;
-    max-width: 200px;
-}
-
+.timer { font-size: 6em; font-weight: 700; letter-spacing: -3px; margin-bottom: 20px; }
+#progress-bar-container { height: 10px; background-color: var(--color-secondary); border-radius: 5px; overflow: hidden; margin-bottom: 30px; }
+#progress-bar { height: 100%; width: 100%; background-color: var(--color-focus); transition: width 1s linear, background-color 0.5s ease; }
+.controls { display: flex; justify-content: center; gap: 15px; margin-bottom: 30px; }
+.main-btn, .secondary-btn { padding: 15px 30px; font-size: 1.2em; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; transition: background-color 0.2s; flex-grow: 1; max-width: 200px; }
 .main-btn.play { background-color: var(--color-start); color: var(--bg-dark); }
 .main-btn.focus { background-color: var(--color-focus); color: var(--text-light); }
 .main-btn.break { background-color: var(--color-break); color: var(--text-light); }
 .secondary-btn { background-color: var(--color-secondary); color: var(--text-light); }
-
-/* 3. MÓDULO DE TAREFAS */
-.task-section h2, .notes-section h2 {
-    font-size: 1.2em;
-    border-bottom: 1px solid var(--color-secondary);
-    padding-bottom: 5px;
-    margin-top: 30px;
-}
-
-#new-task-input {
-    width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-    background-color: #222222;
-    color: var(--text-light);
-    border: 1px solid var(--color-secondary);
-    border-radius: 5px;
-    font-size: 1em;
-    box-sizing: border-box;
-}
-
-.task-item {
-    display: flex;
-    align-items: center;
-    padding: 10px 0;
-    border-bottom: 1px solid #282828;
-}
-
-.task-item:last-child {
-    border-bottom: none;
-}
-
-.task-text {
-    flex-grow: 1;
-    margin-left: 10px;
-    font-size: 1.1em;
-}
-
-.task-completed .task-text {
-    text-decoration: line-through;
-    color: #888888;
-}
-
-/* Checkbox simples e grande para fácil clique */
-input[type="checkbox"] {
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-}
-
-/* 4. MÓDULO BRAIN DUMP */
-#brain-dump-area {
-    width: 100%;
-    min-height: 100px;
-    padding: 10px;
-    margin-top: 10px;
-    background-color: #222222;
-    color: var(--text-light);
-    border: 1px solid var(--color-secondary);
-    border-radius: 5px;
-    font-size: 1em;
-    box-sizing: border-box;
-    resize: vertical;
-}
-
-/* Classes para transição de cores do corpo */
 .focus-mode { background-color: var(--bg-dark); }
-.break-mode { background-color: #1c1f21; } /* Ligeiramente diferente para indicar pausa */
+.break-mode { background-color: #1c1f21; }
+
+/* 2. RASTREADOR DE ÁGUA */
+.water-section {
+    text-align: center;
+    padding: 15px 0;
+    border-top: 1px solid #282828;
+    border-bottom: 1px solid #282828;
+    margin-bottom: 30px;
+}
+.water-section h2 { font-size: 1.2em; margin-bottom: 15px; color: var(--color-water); }
+.water-controls { display: flex; justify-content: center; align-items: center; gap: 10px; }
+#water-display { font-size: 2em; font-weight: bold; min-width: 120px; }
+.water-controls button { padding: 10px 20px; font-size: 1.5em; max-width: none; }
+#increase-water-btn { background-color: var(--color-water); }
+
+/* 3. NAVEGAÇÃO ENTRE SEÇÕES (ABAS) */
+.tab-navigation { display: flex; margin-bottom: 20px; border-bottom: 2px solid var(--color-secondary); }
+.tab-btn { flex-grow: 1; padding: 10px 10px; background: none; border: none; color: var(--color-secondary); font-size: 0.9em; font-weight: bold; cursor: pointer; transition: color 0.2s, border-bottom 0.2s; border-bottom: 2px solid transparent; }
+.tab-btn.active { color: var(--text-light); border-bottom: 2px solid var(--color-focus); }
+.tab-content.hidden { display: none; }
+
+/* 4. MÓDULO DE TAREFAS (Chunking) */
+.task-section h2 { display: none; }
+#new-task-input { width: 100%; padding: 10px; margin-top: 10px; background-color: #222222; color: var(--text-light); border: 1px solid var(--color-secondary); border-radius: 5px; font-size: 1em; box-sizing: border-box; }
+.task-item { padding: 10px 0; border-bottom: 1px solid #282828; }
+.task-completed .task-text { text-decoration: line-through; color: #888888; }
+.task-details { padding-left: 30px; border-top: 1px dashed #333; padding-top: 10px; }
+.subtask-input { width: 90%; padding: 8px; margin-top: 5px; background-color: #333333; color: var(--text-light); }
+.toggle-btn { margin-left: auto; background: none; border: none; color: var(--color-secondary); font-size: 1.2em; cursor: pointer; padding: 5px; }
+
+/* 5. MATRIZ DE EISENHOWER */
+.matrix-section h2 { display: none; }
+.matrix-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.quadrant { border: 1px solid var(--color-secondary); min-height: 180px; padding: 10px; border-radius: 8px; opacity: 0.9; }
+.q1 { background-color: #3e0705; border-color: var(--color-q1); color: var(--color-q1); }
+.q2 { background-color: #0c3e0e; border-color: var(--color-focus); color: var(--color-focus); }
+.q3 { background-color: #4a3400; border-color: var(--color-q3); color: var(--color-q3); }
+.q4 { background-color: #2b2b2b; border-color: var(--color-q4); color: var(--color-q4); }
+.matrix-task-item { background-color: rgba(255, 255, 255, 0.1); border-left: 3px solid; }
+.q1 .matrix-task-item { border-left-color: var(--color-q1); }
+.q2 .matrix-task-item { border-left-color: var(--color-focus); }
+.q3 .matrix-task-item { border-left-color: var(--color-q3); }
+.q4 .matrix-task-item { border-left-color: var(--color-q4); }
+
+/* 6. CALENDÁRIO DE HÁBITOS (NOVO) */
+.calendar-section { text-align: center; }
+.calendar-section h2 { display: none; }
+#calendar-view { margin-bottom: 15px; }
+.month-year { font-size: 1.5em; margin-bottom: 10px; }
+.days-of-week { display: grid; grid-template-columns: repeat(7, 1fr); font-weight: bold; color: #888; font-size: 0.9em; margin-bottom: 5px; }
+.calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; }
+.day-cell {
+    padding: 10px 5px;
+    border-radius: 50%;
+    aspect-ratio: 1 / 1; /* Células quadradas */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.9em;
+    cursor: pointer;
+    background-color: #222;
+    position: relative;
+    transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+.day-cell.inactive { opacity: 0.4; pointer-events: none; }
+.day-cell.selected { background-color: var(--color-focus); color: var(--bg-dark); font-weight: bold; box-shadow: 0 0 10px var(--color-focus); }
+.day-number { font-weight: bold; font-size: 1.1em; }
+.habit-markers { position: absolute; bottom: 2px; left: 50%; transform: translateX(-50%); display: flex; gap: 1px; }
+.marker { width: 4px; height: 4px; border-radius: 50%; }
+
+/* Cores dos Marcadores */
+.marker.estudo { background-color: var(--color-focus); }
+.marker.pos { background-color: var(--color-break); }
+.marker.leitura { background-color: var(--color-start); }
+.marker.gym { background-color: var(--color-gym); }
+
+.habit-buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 15px; }
+.habit-btn {
+    padding: 10px 15px;
+    border: 2px solid #555;
+    border-radius: 50px;
+    background: none;
+    color: var(--text-light);
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.habit-btn.active {
+    background-color: var(--color-focus);
+    border-color: var(--color-focus);
+    color: var(--bg-dark);
+}
+.habit-btn.gym.active { background-color: var(--color-gym); border-color: var(--color-gym); }
+.habit-btn.pos.active { background-color: var(--color-break); border-color: var(--color-break); }
+.habit-btn.leitura.active { background-color: var(--color-start); border-color: var(--color-start); }
+
+
+/* 7. MÓDULO BRAIN DUMP */
+.notes-section h2 { font-size: 1.2em; border-bottom: 1px solid var(--color-secondary); padding-bottom: 5px; margin-top: 30px; }
+#brain-dump-area { width: 100%; min-height: 100px; padding: 10px; margin-top: 10px; background-color: #222222; color: var(--text-light); border: 1px solid var(--color-secondary); border-radius: 5px; font-size: 1em; box-sizing: border-box; resize: vertical; }

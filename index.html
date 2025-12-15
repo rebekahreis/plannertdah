@@ -13,6 +13,14 @@
         
         <header class="header">
             <h1 id="status-text">PRONTO PARA FOCO</h1>
+            
+            <select id="category-select">
+                <option value="estudo">Estudo Geral</option>
+                <option value="pos">Aula da Pós</option>
+                <option value="leitura">Leitura</option>
+                <option value="generico">Foco Genérico</option>
+            </select>
+            
             <div id="timer-display" class="timer">25:00</div>
             <div id="progress-bar-container">
                 <div id="progress-bar"></div>
@@ -23,13 +31,71 @@
             <button id="start-pause-btn" class="main-btn play">INICIAR FOCO</button>
             <button id="reset-btn" class="secondary-btn">REINICIAR</button>
         </section>
-
-        <section class="task-section">
-            <h2>TAREFAS DE HOJE</h2>
-            <div id="task-list">
-                </div>
-            <input type="text" id="new-task-input" placeholder="Nova tarefa (pressione Enter)">
+        
+        <section id="water-tracker" class="water-section">
+            <h2>HIDRATAÇÃO (ml)</h2>
+            <div class="water-controls">
+                <button id="decrease-water-btn" class="secondary-btn">-</button>
+                <span id="water-display">0 ml</span>
+                <button id="increase-water-btn" class="main-btn focus">+</button>
+                <button id="reset-water-btn" class="secondary-btn" style="margin-left: 10px;">Zerar Dia</button>
+            </div>
         </section>
+
+        <nav class="tab-navigation">
+            <button class="tab-btn active" data-tab="tasks">TAREFAS (Chunking)</button>
+            <button class="tab-btn" data-tab="matrix">PRIORIZAÇÃO (Matriz)</button>
+            <button class="tab-btn" data-tab="calendar">HÁBITOS (Calendário)</button>
+        </nav>
+
+        <div id="tasks-tab" class="tab-content active">
+            <section class="task-section">
+                <h2>TAREFAS DE HOJE</h2>
+                <div id="task-list">
+                    </div>
+                <input type="text" id="new-task-input" placeholder="Nova tarefa principal (pressione Enter)">
+            </section>
+        </div>
+
+        <div id="matrix-tab" class="tab-content hidden">
+            <section class="matrix-section">
+                <h2>MATRIZ DE EISENHOWER</h2>
+                <div class="matrix-grid">
+                    <div id="q1" class="quadrant q1" data-priority="q1">
+                        <h3>Q1: Fazer</h3>
+                        <p class="subtitle">Urgente & Importante</p>
+                    </div>
+
+                    <div id="q2" class="quadrant q2" data-priority="q2">
+                        <h3>Q2: Agendar</h3>
+                        <p class="subtitle">Não Urgente & Importante</p>
+                    </div>
+
+                    <div id="q3" class="quadrant q3" data-priority="q3">
+                        <h3>Q3: Delegar</h3>
+                        <p class="subtitle">Urgente & Não Importante</p>
+                    </div>
+
+                    <div id="q4" class="quadrant q4" data-priority="q4">
+                        <h3>Q4: Eliminar</h3>
+                        <p class="subtitle">Não Urgente & Não Importante</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <div id="calendar-tab" class="tab-content hidden">
+            <section class="calendar-section">
+                <h2>RASTREAMENTO DE HÁBITOS</h2>
+                <p>Selecione um dia no calendário abaixo para marcar os hábitos concluídos.</p>
+                <div id="calendar-view">
+                    </div>
+                
+                <h3 style="margin-top: 20px;">Hábitos do Dia <span id="selected-day-display" style="color: var(--color-focus);"></span></h3>
+                <div class="habit-buttons" id="habit-buttons-container">
+                    </div>
+            </section>
+        </div>
 
         <section class="notes-section">
             <h2>BRAIN DUMP (Notas Rápidas)</h2>
