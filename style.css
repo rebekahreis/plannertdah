@@ -7,6 +7,7 @@
     --color-start: #FFC107;    /* Amarelo Quente (para botão iniciar) */
     --color-secondary: #444444; /* Cinza para elementos secundários */
     --color-q1: #f44336; /* Vermelho - Urgente/Importante */
+    --color-q2: #4CAF50; /* Verde - Agendar/Importante */
     --color-q3: #FF9800; /* Laranja - Urgente/Não Importante */
     --color-q4: #9E9E9E; /* Cinza Escuro - Eliminar */
     --color-water: #00BCD4; /* Ciano para Água */
@@ -90,19 +91,40 @@ body {
 
 /* 5. MATRIZ DE EISENHOWER */
 .matrix-section h2 { display: none; }
+/* NOVO: Estilo para o campo de input na matriz */
+#new-matrix-task-input { background-color: #222222 !important; }
+
 .matrix-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .quadrant { border: 1px solid var(--color-secondary); min-height: 180px; padding: 10px; border-radius: 8px; opacity: 0.9; }
 .q1 { background-color: #3e0705; border-color: var(--color-q1); color: var(--color-q1); }
-.q2 { background-color: #0c3e0e; border-color: var(--color-focus); color: var(--color-focus); }
+.q2 { background-color: #0c3e0e; border-color: var(--color-q2); color: var(--color-q2); }
 .q3 { background-color: #4a3400; border-color: var(--color-q3); color: var(--color-q3); }
 .q4 { background-color: #2b2b2b; border-color: var(--color-q4); color: var(--color-q4); }
-.matrix-task-item { background-color: rgba(255, 255, 255, 0.1); border-left: 3px solid; }
+.matrix-task-item { 
+    background-color: rgba(255, 255, 255, 0.1); 
+    border-left: 3px solid; 
+    padding: 8px; 
+    margin-top: 5px; 
+    border-radius: 4px;
+    cursor: pointer; /* Indica que é clicável */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.matrix-task-text { flex-grow: 1; }
+
 .q1 .matrix-task-item { border-left-color: var(--color-q1); }
-.q2 .matrix-task-item { border-left-color: var(--color-focus); }
+.q2 .matrix-task-item { border-left-color: var(--color-q2); }
 .q3 .matrix-task-item { border-left-color: var(--color-q3); }
 .q4 .matrix-task-item { border-left-color: var(--color-q4); }
 
-/* 6. CALENDÁRIO DE HÁBITOS (NOVO) */
+.move-back-btn, .remove-btn { 
+    margin-left: 5px; 
+    font-size: 1.2em; 
+    padding: 0 4px;
+}
+
+/* 6. CALENDÁRIO DE HÁBITOS */
 .calendar-section { text-align: center; }
 .calendar-section h2 { display: none; }
 #calendar-view { margin-bottom: 15px; }
@@ -112,7 +134,7 @@ body {
 .day-cell {
     padding: 10px 5px;
     border-radius: 50%;
-    aspect-ratio: 1 / 1; /* Células quadradas */
+    aspect-ratio: 1 / 1; 
     display: flex;
     flex-direction: column;
     justify-content: center;
